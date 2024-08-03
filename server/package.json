@@ -1,0 +1,38 @@
+{
+  "name": "authentication_service",
+  "version": "0.1.0",
+  "description": "Authentication service",
+  "main": "server.js",
+  "scripts": {
+    "start-auth": "nodemon -L ./Authentication/server.js",
+    "start-quizz": "nodemon -L ./Quizz/server.js",
+    "start-monitoring": "nodemon -L ./Monitoring/server.js",
+    "start-gamification": "nodemon -L ./Gamification/server.js",
+    "start-accounts": "nodemon -L ./Accounts/server.js",
+    "start-primary-gateway": "nodemon -L ./Primary_Gateway/server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "colors": "^1.3.3",
+    "cors": "^2.8.5",
+    "dotenv": "^7.0.0",
+    "express": "^4.16.4",
+    "jsonwebtoken": "^8.5.1",
+    "mongodb": "^3.2.3",
+    "multer": "^1.4.1",
+    "passport": "^0.4.0",
+    "passport-azure-ad": "^4.0.0",
+    "request": "^2.88.0",
+    "request-promise": "^4.2.4",
+    "uuid-mongodb": "^1.1.4",
+    "winston": "^3.2.1"
+  },
+  "devDependencies": {
+    "eslint": "^5.16.0",
+    "eslint-config-google": "^0.12.0",
+    "mocha": "^6.1.3",
+    "nodemon": "^1.18.11"
+  }
+}

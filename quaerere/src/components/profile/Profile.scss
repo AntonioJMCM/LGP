@@ -1,0 +1,106 @@
+@import '../../styles/_variables';
+
+.profile {
+
+    .image-container {
+        position: relative;
+        height: min-content;
+
+        img {
+            border-radius: 15px;
+        }
+
+        input[type='file'] {
+            display: none;
+        }
+    }
+
+    .upload-button {
+        color: $dark-blue;
+        background-color: white;
+        border-radius: 50px;
+        border: 3px solid $dark-blue;
+        transition: all 0.5s ease;
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        margin: -0.5em;
+        cursor: pointer;
+
+        &:hover {
+            color: white;
+            background-color: $dark-blue;
+        }
+
+        i {
+            padding: 0.5em;
+            font-size: 1.3em;
+        }
+    }
+
+    .field {
+        width: 100%;
+        background-color: #E4E4E4;
+        border: 2px solid #CCCCCC;
+        border-radius: 15px;
+        padding: 0.2rem 1.5rem;
+        font-size: 2.2em;
+
+        &:first-child {
+            font-size: 3em;
+            font-weight: 700;
+        }
+
+        &:nth-child(2) {
+            font-weight: 600;
+        }
+
+        &:not(:first-child) {
+            margin-top: 0.77em;
+        }
+
+        p {
+            padding: 0;
+            margin: 0;
+        }
+    }
+
+    .stats {
+        h2 {
+            font-weight: 600 !important;
+            margin: 2.5em 0 1em 0;
+        }
+
+        p {
+            font-size: 1.5em;
+            font-weight: 300;
+            border-left: $lime 8px solid;
+            padding-left: 0.5em;
+        }
+    }
+}
+
+.donutchart {
+    filter: drop-shadow(0px 0px 5px rgba(0, 0, 0, 0.4));
+
+    .donutchart-track {
+        fill: $dark-blue;
+        stroke: $dark-blue;
+        stroke-width: 26;
+    }
+
+    .donutchart-indicator {
+        fill: transparent;
+        stroke: $light-blue;
+        stroke-width: 26;
+        stroke-dasharray: 0 10000;
+        transition: stroke-dasharray .3s ease;
+    }
+
+    .donutchart-text {
+        font-weight: 600;
+        font-size: 1.5em;
+        text-transform: uppercase;
+        fill: white;
+    }
+}

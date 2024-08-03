@@ -1,0 +1,117 @@
+@import '../../styles/_variables';
+
+.sidebar {
+    width: 18em;
+    max-height: 100vh;
+    transition: 0.3s ease;
+    background-color: $dark-blue !important;
+    padding: 3em 0 !important;
+
+    .sidebar-brand {
+        margin: 0;
+
+        .sidebar-avatar {
+            width: 7em;
+            height: 7em;
+            transition: 0.3s ease;
+            border: 0.16em solid $light-blue;
+            border-radius: 50%;
+        }
+    }
+
+    .navigation {
+        margin-top: 2.2em;
+        width: 100%;
+        flex-grow: 1;
+
+        .nav-item {
+            padding: 0.5em 2em;
+            border-radius: 0px 15px 15px 0px;
+            transition: all 0.3s ease-out;
+
+            &:hover {
+                background-color: $light-blue;
+            }
+
+            .nav-link {
+                i {
+                    font-size: 1.3em;
+                    width: 1em;
+                    color: white;
+                }
+
+                span {
+                    margin-left: 1em;
+                    font-size: 1.3em;
+                    transition: 0.3s ease;
+                    font-weight: 300;
+                    color: white;
+                }
+            }
+        }
+    }
+}
+
+#sidebarToggle {
+    width: 2.5rem;
+    height: 2.5rem;
+    position: absolute;
+    top: 50%;
+    left: 16.7rem;
+    z-index: 2;
+    cursor: pointer;
+    transition: 0.3s ease;
+    background-color: #122E34;
+
+    &::after {
+        font-family: 'Font Awesome 5 Free';
+        font-weight: bold;
+        font-size: 1.3em;
+        content: '\f104';
+        margin-right: 0.1rem;
+        color: white;
+    }
+
+    &:hover {
+        text-decoration: none;
+    }
+
+    &:focus {
+        outline: none;
+    }
+}
+
+.sidebar.toggled {
+    width: 6em;
+
+    .sidebar-brand .sidebar-avatar {
+        width: 3.5rem;
+        height: 3.5rem;
+    }
+
+    #sidebarToggle {
+        left: 4.7rem;
+
+        &::after {
+            content: '\f105';
+            margin-left: 0.25rem;
+        }
+    }
+
+    .navigation {
+        margin-top: 4em;
+
+        .nav-item {
+            padding: 1em 0;
+            width: 100%;
+
+            .nav-link {
+                justify-content: center;
+
+                span {
+                    display: none;
+                }
+            }
+        }
+    }
+}

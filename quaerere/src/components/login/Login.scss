@@ -1,0 +1,27 @@
+.login-container {
+    min-height: 100%;
+    min-height: 100vh;
+}
+
+#login {
+    padding: 5em 0;
+    text-align: center;
+
+    img {
+        max-height: 40vh;
+    }
+
+    h1 {
+        font-weight: 600 !important;
+        font-size: 6em;
+        padding-bottom: 0.5em;
+    }
+
+    button.btn {
+        border-radius: 15px;
+        padding: 0.3em 1.2em;
+        font-size: 1.8em;
+        font-weight: 500;
+        box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.25);
+    }
+}

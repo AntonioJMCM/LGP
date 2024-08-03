@@ -1,0 +1,31 @@
+@import '../../../styles/_variables';
+
+.exercise {
+    h3 {
+        font-weight: 600 !important;
+    }
+
+    input[type=number] {
+        background-color: $dark-blue;
+        border: $dark-blue;
+        color: white;
+        border-radius: 8px;
+        padding: 0.3em 0.3em 0.3em 1em;
+        width: 4em;
+        margin-right: 1em;
+
+        &::-webkit-inner-spin-button {
+            opacity: 1;
+        }
+    }
+
+    label {
+        font-size: 1.3em;
+        font-weight: 600;
+    }
+}
+
+.teste {
+    border: 2px solid $dark-blue;
+    border-radius: 23px;
+}

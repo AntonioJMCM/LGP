@@ -1,0 +1,190 @@
+version: "3"
+
+networks:
+  primary_network:
+  # service sub-networks
+  gamification:
+  accounts:
+  authentication:
+  quizz:
+  analytics:
+  monitoring:
+
+services:
+  # Quizz service containers
+  quizz_db:
+    image: mongo
+    restart: always
+    networks:
+      - quizz
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: quizz
+      MONGO_INITDB_ROOT_PASSWORD: quizz_pass
+
+  quizz:
+    build: 
+      context: .
+      dockerfile: ./services/Quizz/Dockerfile
+    networks:
+      - primary_network
+      - quizz
+    volumes:
+      - ./services/common/:/App/common/
+      - ./services/Quizz/:/App/Quizz/
+      - ./services/Quizz/.env:/App/.env
+      - ./package.json:/App/package.json
+    depends_on:
+      - quizz_db
+  # end of quizz service containers
+
+  # Monitoring service containers
+  monitoring_db:
+    image: mongo
+    restart: always
+    networks:
+      - monitoring
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: monitoring
+      MONGO_INITDB_ROOT_PASSWORD: monitoring_pass
+
+  monitoring:
+    build: 
+      context: .
+      dockerfile: ./services/Monitoring/Dockerfile
+    networks:
+      - primary_network
+      - monitoring
+    volumes:
+      - ./services/common/:/App/common/
+      - ./services/Monitoring/:/App/Monitoring/
+      - ./services/Monitoring/.env:/App/.env
+      - ./package.json:/App/package.json
+    depends_on:
+      - monitoring_db
+  #end of monitoring service containers
+
+  # Gamification service containers
+  gamification_db:
+    image: mongo
+    restart: always
+    networks:
+      - gamification
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: gamification
+      MONGO_INITDB_ROOT_PASSWORD: gamification_pass
+
+  gamification:
+    build: 
+      context: .
+      dockerfile: ./services/Gamification/Dockerfile
+    networks:
+      - primary_network
+      - gamification
+    volumes:
+      - ./services/common/:/App/common/
+      - ./services/Gamification/:/App/Gamification/
+      - ./services/Gamification/.env:/App/.env
+      - ./package.json:/App/package.json
+    depends_on:
+      - gamification_db
+  #end of gamification service containers
+
+  # Authentication service containers
+  authentication_db:
+    image: mongo
+    restart: always
+    networks:
+      - authentication
+    environment:
+      MONGO_INITDB_DATABASE: quaerere
+      MONGO_INITDB_ROOT_USERNAME: authentication
+      MONGO_INITDB_ROOT_PASSWORD: authentication_pass
+
+  authentication:
+    build: 
+      context: .
+      dockerfile: ./services/Authentication/Dockerfile
+    networks:
+      - primary_network
+      - authentication
+    volumes:
+      - ./services/common/:/App/common/
+      - ./services/Authentication/:/App/Authentication/
+      - ./services/Authentication/.env:/App/.env
+      - ./package.json:/App/package.json
+    depends_on:
+      - authentication_db
+    ports:
+      - "8181:8080"
+  # end of authentication service containers
+
+  # account service containers
+  accounts_db:
+    image: mongo
+    restart: always
+    networks:
+      - accounts
+    environment:
+      MONGO_INITDB_DATABASE: quaerere
+      MONGO_INITDB_ROOT_USERNAME: accounts
+      MONGO_INITDB_ROOT_PASSWORD: accounts_pass
+
+  accounts:
+    build: 
+      context: .
+      dockerfile: ./services/Accounts/Dockerfile
+    networks:
+      - primary_network
+      - accounts
+    volumes:
+      - ./services/common/:/App/common/
+      - ./services/Accounts/:/App/Accounts/
+      - ./services/Accounts/.env:/App/.env
+      - ./package.json:/App/package.json
+    depends_on:
+      - accounts_db
+  #end of accounts service containers
+
+  # analytics service containers
+  analytics_db:
+    image: mongo
+    restart: always
+    networks:
+      - analytics
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: analytics
+      MONGO_INITDB_ROOT_PASSWORD: analytics_pass
+
+  analytics:
+    build: ./services/Analytics
+    networks:
+      - primary_network
+      - analytics
+    volumes:
+      - ./services/Analytics:/Analytics
+    depends_on:
+      - analytics_db
+  #end of analytics service containers
+
+  # primary gateway service container
+  primary_gateway:
+    build: 
+      context: .
+      dockerfile: ./services/Primary_Gateway/Dockerfile
+    ports:
+      - "80:80"
+    networks:
+      - primary_network
+    volumes:
+      - ./services/common/:/App/common/
+      - ./services/Primary_Gateway/:/App/Primary_Gateway/
+      - ./services/Primary_Gateway/.env:/App/.env
+      - ./package.json:/App/package.json
+    depends_on:
+      - accounts
+      - analytics
+      - authentication
+      - gamification
+      - monitoring
+      - quizz
+  # end of primary gateway service containers

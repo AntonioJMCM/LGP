@@ -1,0 +1,66 @@
+@import '../../styles/_variables';
+
+.header {
+    background-color: $light-grey;
+    position: sticky !important;
+    top: 0;
+    margin: 0 4em 0 4.8em;
+    z-index: 1;
+
+    h1 {
+        font-size: 1.8em;
+    }
+
+    .nav-item {
+        span {
+            color: $dark-blue;
+            font-size: 1.3rem;
+        }
+
+        i {
+            color: $dark-blue;
+            font-size: 1.5rem;
+        }
+
+        .badge {
+            color: white;
+            background-color: red;
+            width: 1.1rem;
+            font-size: 80%;
+            font-weight: 700;
+            border-radius: 50%;
+            position: absolute;
+            right: 1.8rem;
+            top: 1rem;
+        }
+    }
+
+    .input-group {
+        height: 3rem;
+        margin-top: 0.5em;
+
+        .form-control {
+            border: 0.15rem solid $dark-blue;
+            border-right: 0px;
+            background-color: $light-grey;
+            border-radius: 3rem 0 0 3rem;
+        }
+
+        .btn {
+            background-color: $light-grey;
+            color: $dark-blue;
+            height: 2.4rem;
+            border: 0.15rem solid $dark-blue;
+            border-left: 0px;
+            border-radius: 0 3rem 3rem 0;
+
+            i {
+                font-size: 1rem;
+            }
+
+            &:active {
+                background-color: $light-grey;
+            }
+        }
+    }
+}
