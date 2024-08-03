@@ -5,9 +5,6 @@ The software is compatible with Windows 10 and login must be done with an Office
 
 Developed for **Escola Global** by Feeka LGP-2A.
 
-## [Changelog](changelog.md)
-You can check all of the major changes, additions and removals for each version of the application [here](CHANGELOG.md).
-
 ## Get Started
 Make sure you have [yarn](https://yarnpkg.com/en/) installed. Yarn is strongly recommended instead of npm. 
 ```bash
